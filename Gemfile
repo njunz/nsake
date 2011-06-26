@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.9'
@@ -6,6 +7,11 @@ gem 'rails', '3.0.9'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3', '1.3.3'
+
+gem 'typus'
+
+gem 'dragonfly'
+gem 'rack-cache', :require => 'rack/cache'
 
 # Use unicorn as the web server
 # gem 'unicorn'

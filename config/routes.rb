@@ -1,4 +1,20 @@
 Nsake::Application.routes.draw do
+  resources :line_items
+
+  resources :orders
+
+  get "store/index"
+  get "store/add_to_cart"
+
+  match '/store/add_to_cart', :to => 'store#add_to_cart'
+  match '/store/empty_cart', :to => 'store#empty_cart'
+  match '/store/checkout', :to => 'store#checkout'
+  match '/store/save_order', :to => 'store#save_order'
+
+  resources :products
+
+  match '/media/:dragonfly/:file_name', :to => Dragonfly[:images]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
