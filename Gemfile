@@ -6,7 +6,10 @@ gem 'rails', '3.0.9'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3', '1.3.3'
+gem 'sqlite3', '1.3.3', :group => :development
+gem 'sqlite3-ruby'
+
+gem 'jquery-rails'
 
 gem 'typus'
 
@@ -35,3 +38,7 @@ gem 'rack-cache', :require => 'rack/cache'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+group :production do
+  gem 'rake', '~> 0.8.7'
+end
