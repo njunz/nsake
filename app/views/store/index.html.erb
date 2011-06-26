@@ -1,0 +1,19 @@
+<h1>Pragmaticカタログ</h1>
+
+<% for product in @products -%>
+  <div class="entry">
+    <%= image_tag(product.cover_image.url) %>
+    
+    <h3><%=h product.name %></h3>
+    <%= product.description %>
+    <div class="price-line">
+    <span class="price"><%= number_to_currency(product.price) %></span>
+    <!-- START:form_remote_tag -->
+    <%= form_tag(url_for(:action=>'add_to_cart', :id=>product), :remote=>true) do %>
+    
+      <%= submit_tag "カートに入れる" %>
+    <% end %>
+    <!-- END:form_remote_tag -->
+    </div>
+  </div>
+<% end %>

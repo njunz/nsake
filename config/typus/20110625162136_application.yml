@@ -1,0 +1,35 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+LineItem:
+  fields:
+    default: product_id, order_id, quantity, total_price, order, product
+    form: product_id, order_id, quantity, total_price, order, product
+  order_by: 
+  relationships: order, product
+  filters: created_at
+  search: 
+  application: nsake
+
+Order:
+  fields:
+    default: name, address, email
+    form: name, address, email
+  order_by: 
+  relationships: line_items
+  filters: created_at
+  search: name
+  application: nsake
+
+Product:
+  fields:
+    default: code, name, description, cover_image, cover_image_name, detail_image, detail_image_name, price
+    special: cover_image, detail_image, original_file_name
+    form: code, name, description, cover_image, cover_image_name, detail_image, detail_image_name, price, original_file_name
+    new: cover_image, detail_image
+  order_by: 
+  relationships: line_items
+  filters: created_at
+  search: name
+  application: nsake
