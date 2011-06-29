@@ -1,46 +1,146 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- START:jit -->
 <html>
-<head>
-  <title>Pragprog Booksオンラインストア</title>
-<!-- START:stylesheet -->
-  <%= stylesheet_link_tag "depot", :media => "all" %>
-<!-- END:stylesheet -->
-  <!-- START_HIGHLIGHT -->
-  <%= javascript_include_tag :defaults %>
-  <!-- END_HIGHLIGHT -->
-</head>
-<!-- END:jit -->
-<body id="store">
-  <div id="banner">
-    <%= image_tag("logo.png") %>
-    <%= @page_title || "Pragmatic Bookshelf" %>
-  </div>
-  <div id="columns">
-    <div id="side">
-      <!-- START_HIGHLIGHT -->
-      <!-- START:hidden_div -->
-      <% hidden_div_if(@cart.items.empty?, :id => "cart") do %>
-        <%= render(:partial => "cart", :object => @cart) %>
-      <% end %>
-    <!-- END:hidden_div -->
-      <!-- END_HIGHLIGHT -->
+  <head>
+    <title>BEERS NAKAMURA</title>
+    <%= stylesheet_link_tag "depot", :media => "all" %>
 
-      <a href="http://www....">ホーム</a><br />
-      <a href="http://www..../faq">よくある質問</a><br />
-      <a href="http://www..../news">ニュース</a><br />
-      <a href="http://www..../contact">お問い合わせ</a><br />
-    </div>
-    <div id="main">
-      <!-- START:flash -->
-      <% if flash[:notice] -%>
-        <div id="notice"><%= flash[:notice] %></div>
-      <% end -%>
-      <!-- END:flash -->
+    <%= javascript_include_tag :defaults %>
+    <script src="http://ajaxzip3.googlecode.com/svn/trunk/ajaxzip3/ajaxzip3.js" charset="UTF-8"></script>
+    <link type="text/css" href="/stylesheets/ui-lightness/jquery-ui-1.8.13.custom.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="/javascripts/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery-ui-1.8.13.custom.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.ui.datepicker-ja.js"></script>
+    
 
-      <%= yield :layout %>
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" media="screen"/>
+    
+  </head>
+  
+  <body id="store">
+    <div id="testtest">
+      試験中<br />
+      利用不可
     </div>
-  </div>
-</body>
+    
+    <!-- メニュー -->
+    <div class="container">
+      
+      <div id="header_title">BEERS NAKAMURA</div>
+      
+      <ul id="menu">
+        <li>
+          <a href="/store/index">
+            <i class="icon_about"></i>
+            
+            <span class="title">トップへ</span>
+            <span class="description">トップページに戻ります</span>
+          </a>
+        </li>
+        <li>
+          <a href="/store/store_info">
+            <i class="icon_work"></i>
+            <span class="title">お店について</span>
+            <span class="description">BEERS NAKAMURAへようこそ</span>
+          </a>
+        </li>
+        <li>
+          <a href="/store/contact">
+            <i class="icon_help"></i>
+            <span class="title">買物ガイド</span>
+            <span class="description">支払いや送料について説明します</span>
+          </a>
+        </li>
+        <li>
+          <a href="/store/contact">
+            <i class="icon_help"></i>
+            <span class="title">お問い合わせ</span>
+            <span class="description">ご質問があればお気軽にどうぞ</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- The JavaScript -->
+    <script type="text/javascript">
+      $(function() {
+        $('#menu > li').hover(
+          function () {
+            var $this = $(this);
+      
+            $('a',$this).stop(true,true).animate({
+                'bottom':'-15px'
+            }, 300);
+      
+            $('i',$this).stop(true,true).animate({
+              'top':'-10px'
+            }, 400);
+          },
+      
+          function () {
+            var $this = $(this);
+      
+            $('a',$this).stop(true,true).animate({
+              'bottom':'-95px'
+            }, 300);
+      
+            $('i',$this).stop(true,true).animate({
+                'top':'50px'
+            }, 400);
+          }
+        );
+      });
+    </script>
+
+    <div id="columns">
+      <div id="main">
+        <!-- START:flash -->
+        <% if flash[:notice] -%>
+          <div id="notice"><%= flash[:notice] %></div>
+        <% end -%>
+        <!-- END:flash -->
+
+        <%= yield :layout %>
+      </div>
+
+      <div id="side">
+        <!-- START_HIGHLIGHT -->
+        <!-- START:hidden_div -->
+        <% hidden_div_if(@cart.items.empty?, :id => "cart") do %>
+          <%= render(:partial => "cart", :object => @cart) %>
+        <% end %>
+        <!-- END:hidden_div -->
+        <!-- END_HIGHLIGHT -->
+
+        <%= render(:partial => "search_condition") %>
+        <br />
+        <br />
+
+        <%= image_tag ("/images/banar_r1_c1.jpg") %>
+        <%= image_tag ("/images/banar_r5_c2.jpg") %>
+        <%= image_tag ("/images/banar_r6_c1.jpg") %>
+
+        <br />
+        <br />
+        <div id="store_manager_word">
+          <p>【店長の一言】<p>
+              <p>始めまして　和歌山市の田舎の何でも屋　BEERS NAKAMURAの中村です。(^^)/<br /><br />
+                祖父の代から酒屋を始め現在3代目となります(^^)<br />
+                昔からお酒以外の商品も販売している何でも屋、地域密着の酒屋です。<br /><br />
+                ずっと昔から営業しているコンビニ?って感じですね・・・<br /><br />
+                和歌山の美味しい地酒、梅酒、無添加梅干はもちろん、本格焼酎の量り売りや、「彩豆堂」のこだわり豆腐まで販売しています。<br />
+                また、当店が厳選した「全国のお取り寄せのうまいもん」を店頭販売、ネット販売しています。<br /><br />
+                地域密着の酒屋ならではの商品の取り揃え、店頭販売での人気商品をご紹介します。<br /><br />
+                店頭版売していますので、地域のお客様と同様、ネット販売のお客様も安心してお買い求め頂ける様に努めています。<br />
+                商品についてのお問合せ、ご相談もお気軽にして下さいね。<br /><br />
+                お客様にとって、いつも身近に感じて頂ける酒屋を目指しております。<br /><br />
+                よろしくお願いしますm(..)m
+              </p> 
+        </div>
+      </div>
+    </div>
+      
+  </body>
 </html>

@@ -39,6 +39,7 @@ gem 'rack-cache', :require => 'rack/cache'
 #   gem 'webrat'
 # end
 
+# for heroku rake:migrate
 group :production do
   gem 'rake', '~> 0.8.7'
 end

@@ -5,11 +5,21 @@ Nsake::Application.routes.draw do
 
   get "store/index"
   get "store/add_to_cart"
+  get "store/store_info"
+  get "store/contact"
 
   match '/store/add_to_cart', :to => 'store#add_to_cart'
   match '/store/empty_cart', :to => 'store#empty_cart'
   match '/store/checkout', :to => 'store#checkout'
   match '/store/save_order', :to => 'store#save_order'
+  match '/store/send_mail', :to => 'store#send_mail'
+  match '/store/confirm', :to => 'store#confirm'
+  match '/store/index', :to => 'store#index'
+  
+  match '/store/confirm',
+  :to => 'store#confirm', 
+  :member => { :simple => :get, :finish => :put },  
+  :collection => { :unfinished => :get, :confirm => :post }
 
   resources :products
 

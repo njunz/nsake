@@ -1,4 +1,4 @@
-<h1>Pragmaticカタログ</h1>
+<h1>おすすめの商品</h1>
 
 <% for product in @products -%>
   <div class="entry">
@@ -7,7 +7,8 @@
     <h3><%=h product.name %></h3>
     <%= product.description %>
     <div class="price-line">
-    <span class="price"><%= number_to_currency(product.price) %></span>
+    <span class="price"><%= number_to_currency(product.price, :unit=>"円", :precision=>0, :format=>"%n%u") %></span>
+    
     <!-- START:form_remote_tag -->
     <%= form_tag(url_for(:action=>'add_to_cart', :id=>product), :remote=>true) do %>
     

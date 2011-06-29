@@ -1,14 +1,31 @@
+*{
+    margin:0;
+    padding:0;
+}
+
 /* 全体のスタイル */
 
 /* START:notice */
 #notice {
   border: 2px solid red;
   padding: 1em;
-  margin-bottom: 2em;
+  margin-bottom: 100px;
+  bottom:auto;
   background-color: #f0f0f0;
   font: bold smaller sans-serif;
 }
 /* END:notice */
+
+#testtest{
+    top:0;
+    left:0;
+    margin:10px;
+    padding: 10px;
+    position: absolute;
+    color: red;
+    font-size: 30px;
+    border: 1px solid;
+}
 
 
 h1 {
@@ -67,40 +84,87 @@ h1 {
 
 /* START:mainlayout */
 /* メインページのスタイル */
+#body{
+    color: #fff;
+    background-color:#232323;
+    font-family: "Arial Narrow", sans-serif;
+    font-size:16px;
+    line-height:24px;
+    
+}
 
-#banner {
-  background: #9c9;
+#main {
+    float:left;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+    width:840px;
+    margin-top:40px;
+    margin-right:20px;
+    position:relative;
+    overflow:hidden;
+    border:3px solid #fff;
+    background-color:#fff;
+    -moz-box-shadow:1px 1px 6px #000;
+    -webkit-box-shadow:1px 1px 6px #000;
+    -moz-border-radius:20px 20px 20px 20px;
+    -webkit-border-top-left-radius:20px;
+    -webkit-border-top-right-radius:20px;
+    -webkit-border-bottom-left-radius:20px;
+    -webkit-border-bottom-right-radius:20px;
+    border-radius:20px 20px 20px 20px;
+}
+
+#columns {
+  background: #141;
+
+}
+
+.slidingMenu {
+	position: absolute;
+	height:410px;
+	width: 410px;
+	top:40px;
+	overflow:hidden;
+	right:1px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#side {
+  float: right;
+  padding-left: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-bottom: 2px solid;
-  font: small-caps 40px/40px "Times New Roman", serif;
-  color: #282;
-  text-align: center;
+  width: 340px;
+  margin-top:40px;
+  margin-right:20px;
+  position:relative;
+  overflow:hidden;
+  border:3px solid #fff;
+  background-color:#fff;
+  -moz-box-shadow:1px 1px 6px #000;
+  -webkit-box-shadow:1px 1px 6px #000;
+  -moz-border-radius:20px 20px 20px 20px;
+  -webkit-border-top-left-radius:20px;
+  -webkit-border-top-right-radius:20px;
+  -webkit-border-bottom-left-radius:20px;
+  -webkit-border-bottom-right-radius:20px;
+  border-radius:20px 20px 20px 20px;
+}
+
+#store_manager_word {
+    color:        #244;
+    font-weight:  normal;
+    font-size:    small;
 }
 
 #banner img {
   float: left;
 }
 
-#columns {
-  background: #141;
-}
 
-#main {
-  margin-left: 13em;
-  padding-top: 4ex;
-  padding-left: 2em;
-  background: white;
-}
-
-#side {
-  float: left;
-  padding-top: 1em;
-  padding-left: 1em;
-  padding-bottom: 1em;
-  width: 12em;
-  background: #141;
-}
 
 #side a {
   color: #bfb;
@@ -180,7 +244,7 @@ h1 {
 
 #cart, #cart table {
   font-size: smaller;
-  color:     white;
+  color:     #B30000;
 }
 
 #cart table {
@@ -205,7 +269,7 @@ h1 {
 }
 
 .depot-form label {
-  width: 5em;
+  width: 8em;
   float: left;
   text-align: right;
   padding-top: 0.2em;

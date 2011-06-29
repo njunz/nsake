@@ -14,16 +14,15 @@ class Order < ActiveRecord::Base
   #END:has_many
   PAYMENT_TYPES = [
     # 表示されるもの      DB内で格納されるもの
-    [ "現金",             "check" ],
-    [ "クレジットカード", "cc" ],
-    [ "注文書",           "po" ]
+    [ "代金引換", "money" ],
+    [ "銀行振込", "bank" ],
   ]
 
 #END:validate
   # ...
   #END:select
   #START:validate
-  validates_presence_of :name, :address, :email, :pay_type
+  validates_presence_of :name, :email, :pay_type
   validates_inclusion_of :pay_type, :in => 
     PAYMENT_TYPES.map {|disp, value| value}
 

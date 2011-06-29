@@ -7,5 +7,7 @@
 <!-- #END_HIGHLIGHT -->
   <td><%= cart_item.quantity %>&times;</td>
   <td><%=h cart_item.name %></td>
-  <td class="item-price"><%= number_to_currency(cart_item.price) %></td>
+  <td class="item-price">
+    <%= number_to_currency(cart_item.price, :unit=>"円", :precision=>0, :format=>"%n%u") %>
+  </td>
 </tr>

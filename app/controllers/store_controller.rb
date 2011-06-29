@@ -15,10 +15,17 @@ class StoreController < ApplicationController
       #END:before_filter
   #START:index
   def index
-    @products = Product.find_products_for_sale
+    @products = Product.search(params)
   end
   #END:index
 
+  def store_info
+    
+  end
+
+  def send_mail
+    ContactMailer.sent(params[:name], params[:name_kana], params[:email], params[:content]).deliver
+  end
 
   #START:rti
   #START:add_to_cart
@@ -43,19 +50,42 @@ class StoreController < ApplicationController
       redirect_to_index("カートは現在空です")
     else
       @order = Order.new
+
+      @month = []
+      for num in 1..12
+        @month << ["#{num}", num]
+      end
+
+      @day = []
+      for num in 1..31
+        @day << ["#{num}", num]
+      end
     end
   end
   #END:checkout
 
-  #START:save_order
-  def save_order
+  def confirm  
     @order = Order.new(params[:order])
     @order.add_line_items_from_cart(@cart)
+
+    if @order.valid?
+      session[:order] = @order
+      render :action => 'confirm'
+    else  
+      render :action => 'checkout'
+    end  
+  end
+  
+  #START:save_order
+  def save_order
+
+    @order = session[:order]
+    
     if @order.save
+      OrderMailer.sent(@order).deliver
       session[:cart] = nil
-# START_HIGHLIGHT
+      
       redirect_to_index(I18n.t('flash.thanks'))
-# END_HIGHLIGHT
     else
       render :action => 'checkout'
     end

@@ -17,9 +17,7 @@ class Product < ActiveRecord::Base
   image_accessor :cover_image
   image_accessor :detail_image
 
-  def self.find_products_for_sale
-    find(:all, :order => "name")
-  end
+  named_scope :by_price, lambda{|price| {:conditions => ['price <= ?', price]} }
 
   # validation stuff...
 #END:salable
@@ -38,4 +36,34 @@ class Product < ActiveRecord::Base
 #END:val2a
 #END:validation
 
+  def self.search(params = {})
+    exec_scopes = []  # [実行するスコープ名(シンボル), 引数] を格納する配列
+
+    # if params[:deleted] == true
+    #   exec_scopes << [:deleted]
+    # else
+    #   exec_scopes << [:active]
+    # end
+
+    if params[:cond_price] and ! params[:cond_price].empty?
+      exec_scopes << [:by_price, params[:cond_price]]
+    end
+  
+    # 実行するスコープがない場合
+    if exec_scopes.size == 0
+      return Product.scoped
+    end
+
+    # named_scopeをまとめて実行
+    exec_scopes.reverse.inject(self){|obj, exec_scope|
+      scope = exec_scope.shift
+      args = exec_scope
+
+      if args.size > 0
+        obj = obj.send(scope, *args)
+      else
+        obj = obj.send(scope)
+      end
+    }
+  end
 end
