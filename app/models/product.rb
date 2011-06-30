@@ -25,9 +25,9 @@ class Product < ActiveRecord::Base
   validates :code,  :presence => true,:uniqueness=>true
   validates :name,  :presence => true,:uniqueness=>true
   validates :description, :presence => true
-  validates :cover_image, :presence => true
-  validates :detail_image, :presence => true
-  validates :price, :numericality => {:only_integer => true, :greater_than => 1}, :format => { :with => %r{\.(gif|jpg|png)$}i, :message => 'はGIF、JPG、PNG画像のURLでなければなりません' }  
+  validates :cover_image, :presence => true, :format => { :with => %r{\.(gif|jpg|png)$}i, :message => 'はGIF、JPG、PNG画像のURLでなければなりません'}
+  validates :detail_image, :presence => true, :format => { :with => %r{\.(gif|jpg|png)$}i, :message => 'はGIF、JPG、PNG画像のURLでなければなりません'}
+  validates :price, :numericality => {:only_integer => true, :greater_than => 1}
 
 # protected
 #   def price_must_be_at_least_a_cent
