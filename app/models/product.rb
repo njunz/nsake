@@ -27,7 +27,6 @@ class Product < ActiveRecord::Base
   validates :description, :presence => true
   # validates :cover_image, :presence => true, :format => { :with => %r{\.(gif|jpg|png)$}i, :message => 'はGIF、JPG、PNG画像のURLでなければなりません'}
   # validates :detail_image, :presence => true, :format => { :with => %r{\.(gif|jpg|png)$}i, :message => 'はGIF、JPG、PNG画像のURLでなければなりません'}
-  validates :cover_image, :presence => true
   validates :price, :numericality => {:only_integer => true, :greater_than => 1}
 
 # protected
