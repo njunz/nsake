@@ -23,7 +23,7 @@ Nsake::Application.routes.draw do
 
   resources :products
 
-  match '/media/:dragonfly/:file_name', :to => Dragonfly[:images]
+  #match '/media/:dragonfly/:file_name', :to => Dragonfly[:images]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
