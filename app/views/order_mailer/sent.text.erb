@@ -1,0 +1,9 @@
+ご注文ありがとうございます。
+注文を受け付けました。
+【注文内容】
+<% @order.line_items.each do |item| %>
+<%= item.product.code %>
+<%= item.product.name %>
+<%= item.product.price %>
+<%= item.quantity %>
+<% end %>

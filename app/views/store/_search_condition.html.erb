@@ -1,0 +1,9 @@
+<br />
+
+<div>
+<% form_tag do %>
+  <%= label_tag "金額" -%>
+  <%= select_tag "cond_price", options_for_select([['', ''], ['1000円以下', '1000'], ['2000円以下', '2000'], ['3000円以下', '3000']]) %>
+  <%= submit_tag '絞り込む', :action => "index" %>
+<% end %>
+</div>

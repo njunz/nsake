@@ -94,7 +94,6 @@ DEPENDENCIES
   jquery-rails
   rack-cache
   rails (= 3.0.9)
-  rake (~> 0.8.7)
   sqlite3 (= 1.3.3)
   sqlite3-ruby
   typus

@@ -1,0 +1,128 @@
+<div class="depot-form">
+
+  <div style="border-style:dotted; border-width: 1px 1px 1px 1px; border-color: #708090; width:400px">
+    <table width="400px">
+      <tr>
+        <td width="60px" align="center">注文者等情報入力</td>
+        <td width="60px" align="center">内容確認</td>
+        <td width="60px" align="center">購入完了</td>
+      </tr>
+      <tr>
+        <td width="60px" align="center">▶▶▶</td>
+        <td width="60px" align="center">▶▶▶</td>
+        <td width="60px" align="center">▶▶▶</td>
+      </tr>
+    </table>
+  </div>
+  <br />
+  <br />
+
+  <legend>購入情報</legend>
+  <!-- <table width="600px"> -->
+  <!--   <% @cart.items.each do |item| %> -->
+
+  <!--     <tr> -->
+  <!--       <td width="40px">商品コード</td> -->
+  <!--       <td><%= item.product.code %></td> -->
+  <!--       <td width="40px">名称</td> -->
+  <!--       <td><%= item.product.name %></td> -->
+  <!--       <td width="40px">価格</td> -->
+  <!--       <td><%= item.product.price %></td> -->
+  <!--       <td width="40px">数量</td> -->
+  <!--       <td><%= item.quantity %></td> -->
+  <!--     </tr> -->
+  <!--   <% end %> -->
+  <!-- </table> -->
+  <table width="600px">
+    <tr>
+      <th width="40px">商品コード</th>
+      <th width="40px">名称</th>
+      <th width="40px">価格</th>
+      <th width="40px">数量</th>
+    </tr>
+    <% @order.line_items.each do |item| %>
+      <tr>
+        <td><%= item.product.code %></td>
+        <td><%= item.product.name %></td>
+        <td><%= item.product.price %></td>
+        <td><%= item.quantity %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  
+  <legend>注文者情報</legend>
+  <table width="600px">
+    <tr>
+      <td width="40px">お名前</td>
+      <td><%= @order.name %></td>
+    </tr>
+
+    <tr>
+      <td>お名前(カナ)</td>
+      <td><%= @order.name_kana %></td>
+    </tr>
+
+    <tr>
+      <td>郵便番号</td>
+      <td><%= @order.zip %></td>
+    </tr>
+    <tr>
+      <td>ご住所</td>
+      <td><%= @order.address %></td>
+    </tr>
+    <tr>
+      <td>Eメール</td>
+      <td><%= @order.email %></td>
+    </tr>
+    <tr>
+      <td>電話番号</td>
+      <td><%= @order.tel %></td>
+    </tr>
+    <tr>
+      <td>お支払い</td>
+      <td><%= @order.pay_type %></td>
+    </tr>
+  </table>
+  <br />
+
+  <!-- お届け先情報 -->
+  <legend>お届け先情報</legend>(※注文者の住所と異なる場合に記入)
+  <table width="600px">
+    <tr>
+      <td>お名前</td>
+      <td><%= @order.send_name %></td>
+    </tr>
+    <tr>
+      <td>お名前(カナ)</td>
+      <td><%= @order.send_name_kana %></td>
+    </tr>
+    <tr>
+      <td>電話番号</td>
+      <td><%= @order.send_tel %></td>
+    </tr>
+    <tr>
+      <td>郵便番号</td>
+      <td><%= @order.send_zip %></td>
+    </tr>
+    <tr>
+      <td>ご住所</td>
+      <td><%= @order.send_address %></td>
+    </tr>
+  </table>
+  <br />
+  
+  <!-- ラベル情報等、その他 -->
+  <legend>その他</legend>
+  <table width="600px">
+    <tr>
+      <td>備考</td>
+      <td><%= @order.remark %></td>
+    </tr>
+  </table>
+
+
+  <%= button_to "確定", :action => 'save_order' %>
+  <input type="button" value="戻る" onclick="history.back()">
+</div>
+

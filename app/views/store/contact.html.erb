@@ -1,0 +1,32 @@
+<h1>お問い合わせ</h1>
+
+以下のフォームに入力の上、送信ボタンをクリックして下さい。
+
+<% form_tag :contoller => "store", :action => "send_mail" do %>
+
+<table>
+<tr>
+  <td><%= label_tag 'お名前' %></td>
+  <td><%= text_field_tag 'name' %></td>
+</tr>
+<tr>
+  <td><%= label_tag 'お名前(カナ)' %></td>
+  <td><%= text_field_tag 'name_kana' %></td>
+</tr>
+<tr>
+  <td><%= label_tag 'Eメール' %></td>
+  <td><%= text_field_tag 'email' %></td>
+</tr>
+<tr>
+  <td><%= label_tag 'お問い合わせ内容' %></td>
+  <td><%= text_area_tag 'content', "", :size => "80x10" %></td>
+</tr>
+</table>
+<br />
+<p>※お問い合わせは電話でも受け付けております。TEL:073-452-8818</p>
+
+<input name="reset" class="sbutton" value="リセット" type="reset" />
+<%= submit_tag "送信" %>
+
+<% end %>
+
