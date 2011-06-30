@@ -15,6 +15,7 @@ gem 'typus'
 
 gem 'dragonfly'
 gem 'rack-cache', :require => 'rack/cache'
+gem 'fog'
 
 # Use unicorn as the web server
 # gem 'unicorn'
