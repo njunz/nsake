@@ -1,9 +1,39 @@
-ご注文ありがとうございます。
-注文を受け付けました。
-【注文内容】
+下記の注文を受け付けました。
+詳細は画面で確認して下さい。
+
+注文番号： <%= @order.id %>
+
+【購入内容】
 <% @order.line_items.each do |item| %>
-<%= item.product.code %>
-<%= item.product.name %>
-<%= item.product.price %>
-<%= item.quantity %>
+----------------------------------
+商品コード：<%= item.product.code %>
+商品名<%= item.product.name %>
+単価：<%= number_to_currency(item.product.price, :unit=>"円", :precision=>0, :format=>"%n%u") %>
+数量：<%= item.quantity %>
+合価：<%= number_to_currency(item.total_price, :unit=>"円", :precision=>0, :format=>"%n%u") %>
+----------------------------------
 <% end %>
+合計：<%= number_to_currency(@order.total_price, :unit=>"円", :precision=>0, :format=>"%n%u") %>
+----------------------------------
+
+【注文者情報】
+お名前：<%= @order.name %>
+お名前(カナ)<%= @order.name_kana %>
+郵便番号：<%= @order.zip %>
+ご住所：<%= @order.address %>
+Eメール：<%= @order.email %>
+電話番号：<%= @order.tel %>
+お支払い方法：<%= @order.pay_type_name %>
+
+【お届け先情報】
+お名前：<%= @order.send_name %>
+お名前(カナ)<%= @order.send_name_kana %>
+郵便番号：<%= @order.send_zip %>
+ご住所：<%= @order.send_address %>
+電話番号：<%= @order.tel %>
+
+【その他情報】
+配達日：<%= @order.year %>年<%= @order.month %>月<%= @order.day %>日
+配達の時間帯：<%= @order.time_zone_name %>
+備考：<%= @order.remark %>
+

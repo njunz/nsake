@@ -1,0 +1,2 @@
+Parameters: {"utf8"=>"✓", "authenticity_token"=>"PjvE6pLe6s9jdMo2Ptadlr4f7COs9ljob8DxrlshnFI=", "order"=>{"name"=>"a", "name_kana"=>"aa", "email"=>"njunichiro@gmail.com", "email_confirmation"=>"njunichiro@gmail.com", "tel"=>"08043962818", "pay_type"=>"money", "send_name"=>"", "send_name_kana"=>"", "send_tel"=>"", "send_zip"=>"", "send_address"=>"郵便番号を入力すると番地情報を除いて住所が自動で入力されます", "is_adult"=>"1", "year"=>"2011", "month"=>"7", "day"=>"8", "time_zone"=>"3", "remark"=>"ラベル情報等必要事項があれば記載して下さい"}, "zip"=>"5870003", "order_address"=>"大阪府堺市美原区阿弥", "datepicker3"=>"", "commit"=>"注文する"}
+

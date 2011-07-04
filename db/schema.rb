@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110629113503) do
+ActiveRecord::Schema.define(:version => 20110702153058) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -57,6 +57,9 @@ ActiveRecord::Schema.define(:version => 20110629113503) do
     t.boolean  "is_adult"
     t.string   "delivery_date"
     t.string   "time_zone"
+    t.string   "year"
+    t.string   "month"
+    t.string   "day"
   end
 
   create_table "products", :force => true do |t|

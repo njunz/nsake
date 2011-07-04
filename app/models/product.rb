@@ -1,26 +1,11 @@
 # -*- coding: utf-8 -*-
-#---
-# Excerpted from "Agile Web Development with Rails, 3rd Ed.",
-# published by The Pragmatic Bookshelf.
-# Copyrights apply to this code. It may not be used to create training material, 
-# courses, books, articles, and the like. Contact us if you are in doubt.
-# We make no guarantees that this code is fit for any purpose. 
-# Visit http://www.pragmaticprogrammer.com/titles/rails3 for more book information.
-#---
-#START:salable
-#START:has_many
 class Product < ActiveRecord::Base
   has_many :line_items
-  # ...
-  #END:has_many
 
   image_accessor :cover_image
   image_accessor :detail_image
 
   named_scope :by_price, lambda{|price| {:conditions => ['price <= ?', price]} }
-
-  # validation stuff...
-#END:salable
 
   validates :code,  :presence => true,:uniqueness=>true
   validates :name,  :presence => true,:uniqueness=>true
@@ -34,8 +19,6 @@ class Product < ActiveRecord::Base
 #     errors.add(:price, 'は最小でも0.01以上でなければなりません') if price.nil? ||
 #                        price < 0.01
 #   end
-#END:val2a
-#END:validation
 
   def self.search(params = {})
     exec_scopes = []  # [実行するスコープ名(シンボル), 引数] を格納する配列

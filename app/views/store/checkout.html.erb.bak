@@ -1,0 +1,136 @@
+<div class="depot-form">
+
+  <div style="border-style:dotted; border-width: 1px 1px 1px 1px; border-color: #708090; width:400px">
+    <table width="400px">
+      <tr>
+        <td width="60px" align="center">注文者等情報入力</td>
+        <td width="60px" align="center">内容確認</td>
+        <td width="60px" align="center">購入完了</td>
+      </tr>
+      <tr>
+        <td width="60px" align="center">▶▶▶</td>
+        <td width="60px" align="center">▶▶▶</td>
+        <td width="60px" align="center">▶▶▶</td>
+      </tr>
+    </table>
+  </div>
+  <br />
+  <br />
+  
+  <%= error_messages_for 'order' %>
+  
+  <% form_for :order, :url => { :action => :confirm }, :html => { :class => "niceform"} do |form| %>
+  <fieldset>
+    <legend>注文者情報</legend>
+    <dl>
+      <dt><%= form.label :name, "お名前:" %></dt>
+      <dd><%= form.text_field :name, :size => 40 %></dd>
+    </dl>
+    <dl>
+      <dt><%= form.label :name_kana, "お名前(カナ):" %></dt>
+      <dd><%= form.text_field :name_kana, :size => 40 %></dd>
+    </dl>
+
+    <dl>
+      <dt><%= form.label :zip, "郵便番号:" %></dt>
+      <!-- <dd><%= form.text_field :zip, :size => 8, :name => :zip, :onkeyup => "AjaxZip3.zip2addr(this,'','order_address','order_address');" %></dd> -->
+      <dd><%= form.text_field :zip, :size => 8, :name => :zip %></dd>
+    </dl>
+    
+    <dl>
+      <dt><%= form.label :address, "ご住所:" %></dt>
+      <dd><%= form.text_area :address, :name => "order_address", :rows => 4, :cols => 60 %></dd>
+    </dl>
+    
+
+    <dl>
+      <dt><%= form.label :email, "Eメール:" %></dt>
+      <dd><%= form.text_field :email, :size => 40 %></dd>
+    </dl>
+
+    <dl>
+      <dt><%= form.label :email_confirm, "Eメール(確認用):" %></dt>
+      <dd><%= form.text_field :email_confirm, :size => 40 %></dd>
+    </dl>
+
+    <dl>
+      <dt><%= form.label :tel, "電話番号:" %></dt>
+      <dd><%= form.text_field :tel, :size => 10 %></dd>
+    </dl>
+
+    <dl>
+      <dt><%= form.label :pay_type, "お支払い:" %></dt>
+      <dd><%=
+             form.select :pay_type,
+             Order::PAYMENT_TYPES, 
+             :prompt => "お支払い方法を選択してください"
+             %>
+      </dd>
+    </dl>
+    <br />
+    <br />
+
+    <!-- お届け先情報 -->
+    <legend>お届け先情報&nbsp;&nbsp;(※注文者の住所と異なる場合に記入)</legend><br />
+    <dl>
+      <dt><%= form.label :send_name, "お名前:" %></dt>
+      <dd><%= form.text_field :send_name, :size => 40 %></dd>
+    </dl>
+    <dl>
+      <dt><%= form.label :send_name_kana, "お名前(カナ):" %></dt>
+      <dd><%= form.text_field :send_name_kana, :size => 40 %></dd>
+    </dl>
+    <dl>
+      <dt><%= form.label :send_tel, "電話番号:" %></dt>
+      <dd><%= form.text_field :send_tel, :size => 10 %></dd>
+    </dl>
+    <dl>
+      <dt><%= form.label :send_zip, "郵便番号:" %></dt>
+      <dd><%= form.text_field :send_zip, :size => 8 %></dd>
+    </dl>
+    <dl>
+      <dt><%= form.label :send_address, "ご住所:" %></dt>
+      <dd><%= form.text_area :send_address, :rows => 4, :cols => 60 %></dd>
+    </dl>
+    <br />
+    <br />
+    <br />
+    <br />
+    
+    <!-- ラベル情報等、その他 -->
+    <legend>その他</legend>
+
+    
+    <dl>
+      <dt><%= form.label :is_adult, "成人である:" %></dt>
+      <dd><%= form.check_box :is_adult %></dd>
+    </dl>
+    <dl>
+      <dt><%= form.label :delivery_date, "配達日:" %></dt>
+      <dd>
+        <%= form.select :delivery_date, [["2011", 2011], ["2012", 2012]], {:include_blank => true}, {:id => "y", :name => "year"} %>年
+        <%= form.select :delivery_date, @month, {:include_blank => true}, {:id => "m", :name => "month"} %>月
+        <%= form.select :delivery_date, @day, {:include_blank => true}, {:id => "d", :name => "day"} %>日
+        <%= form.text_field :delivery_date, {:style => "display:none", :id => "datepicker0", :name => "datepicker3"} %>
+      </dd>
+    </dl>
+
+    
+    <dl>
+      <dt><%= form.label :delivery_date, "配達の時間帯:" %></dt>
+      <dd>
+        <%= form.select :delivery_date, [["9時〜12時", 1], ["12時〜15時", 2], ["16時〜19時", 3]], {:include_blank => true} %>
+      </dd>
+    </dl>
+    <dl>
+      <dt><%= form.label :remark, "備考:" %></dt>
+      <dd><%= form.text_area :remark, :rows => 4, :cols => 60, :value => "ラベル情報等記載して下さい" %></dd>
+    </dl>
+    
+    <dl>
+      <dt><%= submit_tag "注文する", :class => "submit" %></dt>
+      <dt><input name="reset" class="sbutton" value="リセット" type="reset" /></dt>
+    </dl>
+  </fieldset>
+<% end %>
+</div>

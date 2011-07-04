@@ -103,7 +103,6 @@ h1 {
     width:840px;
     margin-top:40px;
     margin-right:20px;
-    position:relative;
     overflow:hidden;
     border:3px solid #fff;
     background-color:#fff;
@@ -253,42 +252,6 @@ h1 {
   margin-bottom: 10px;
 }
 /* END:cartside */
-
-/* START:form */
-/* 注文フォームのスタイル */
-
-.depot-form fieldset {
-  background: #efe;
-}
-
-.depot-form legend {
-  color: #dfd;
-  background: #141;
-  font-family: sans-serif;
-  padding: 0.2em 1em;
-}
-
-.depot-form label {
-  width: 8em;
-  float: left;
-  text-align: right;
-  padding-top: 0.2em;
-  margin-right: 0.1em;
-  display: block;
-}
-
-.depot-form select, .depot-form textarea, .depot-form input {
-  margin-left: 0.5em;
-}
-
-.depot-form .submit {
-  margin-left: 4em;
-}
-
-.depot-form div {
-  margin: 0.5em 0;
-}
-/* END:form */
 
 /* エラーボックス */
 

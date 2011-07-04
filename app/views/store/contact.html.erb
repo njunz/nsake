@@ -1,32 +1,34 @@
-<h1>お問い合わせ</h1>
-
-以下のフォームに入力の上、送信ボタンをクリックして下さい。
-
-<% form_tag :contoller => "store", :action => "send_mail" do %>
-
-<table>
-<tr>
-  <td><%= label_tag 'お名前' %></td>
-  <td><%= text_field_tag 'name' %></td>
-</tr>
-<tr>
-  <td><%= label_tag 'お名前(カナ)' %></td>
-  <td><%= text_field_tag 'name_kana' %></td>
-</tr>
-<tr>
-  <td><%= label_tag 'Eメール' %></td>
-  <td><%= text_field_tag 'email' %></td>
-</tr>
-<tr>
-  <td><%= label_tag 'お問い合わせ内容' %></td>
-  <td><%= text_area_tag 'content', "", :size => "80x10" %></td>
-</tr>
-</table>
 <br />
-<p>※お問い合わせは電話でも受け付けております。TEL:073-452-8818</p>
+以下のフォームに入力の上、送信ボタンをクリックして下さい。<br /><br />
+※お問い合わせは電話でも受け付けております。TEL:073-452-8818<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;その他詳細については<%= link_to 'お店について', :action => "store_info" %>をご確認下さい。
 
-<input name="reset" class="sbutton" value="リセット" type="reset" />
+<form accept-charset="UTF-8" action="/store/send_mail" method="post" class="niceform">
+
+<br />
+<fieldset>
+  <legend>お問い合わせ</legend>
+  <dl>
+    <dt><%= label_tag 'お名前' %></dt>
+    <dd><%= text_field_tag 'name' %></dd>
+  </dl>
+  <dl>
+    <dt><%= label_tag 'お名前(カナ)' %></dt>
+    <dd><%= text_field_tag 'name_kana' %></dd>
+  </dl>
+  <dl>
+    <dt><%= label_tag 'Eメール' %></dt>
+    <dd><%= text_field_tag 'email' %></dd>
+  </dl>
+  <dl>
+    <dt><%= label_tag 'お問い合わせ内容' %></dt>
+    <dd><%= text_area_tag 'content',"", :rows=>10, :cols=>60 %></dd>
+  </dl>
+</fieldset>
+
+<fieldset class="action">
 <%= submit_tag "送信" %>
+<input name="reset" class="sbutton" value="リセット" type="reset" />
+</fieldset>
 
-<% end %>
-
+</form>

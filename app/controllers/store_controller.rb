@@ -50,16 +50,6 @@ class StoreController < ApplicationController
       redirect_to_index("カートは現在空です")
     else
       @order = Order.new
-
-      @month = []
-      for num in 1..12
-        @month << ["#{num}", num]
-      end
-
-      @day = []
-      for num in 1..31
-        @day << ["#{num}", num]
-      end
     end
   end
   #END:checkout
@@ -67,6 +57,35 @@ class StoreController < ApplicationController
   def confirm  
     @order = Order.new(params[:order])
     @order.add_line_items_from_cart(@cart)
+
+    if @order.address == "郵便番号を入力すると番地情報を除いて住所が自動で入力されます"
+      @order.address = ""
+    end
+    if @order.send_address == "郵便番号を入力すると番地情報を除いて住所が自動で入力されます"
+      @order.send_address = ""
+    end
+
+    if @order.remark == "ラベル情報等必要事項があれば記載して下さい"
+      @order.remark = ""
+    end
+
+    Order::PAYMENT_TYPES.each do |paytypes|
+      if paytypes[1] == @order.pay_type
+        @order.pay_type_name = paytypes[0]
+        break;
+      end
+    end
+
+    Order::TIME_ZONE.each do |timezone|
+      if timezone[1] == @order.time_zone
+        @order.time_zone_name = timezone[0]
+        break;
+      end
+    end
+
+    if @order.is_send()
+        @order.is_send = true
+    end
 
     if @order.valid?
       session[:order] = @order

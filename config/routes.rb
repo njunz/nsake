@@ -7,6 +7,7 @@ Nsake::Application.routes.draw do
   get "store/add_to_cart"
   get "store/store_info"
   get "store/contact"
+  get "store/guide"
 
   match '/store/add_to_cart', :to => 'store#add_to_cart'
   match '/store/empty_cart', :to => 'store#empty_cart'
